@@ -1,4 +1,4 @@
-package com._fsGerenciamento.main.sistema_protocolo;
+package com.fsGerenciamento.main.sistema_protocolo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

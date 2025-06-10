@@ -1,4 +1,4 @@
-package com._fsGerenciamento.main.sistema_protocolo.Entity;
+package com.fsGerenciamento.main.sistema_protocolo.Entity;
 
 import jakarta.persistence.*;
 

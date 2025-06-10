@@ -1,6 +1,5 @@
-package com._fsGerenciamento.main.sistema_protocolo.Entity;
+package com.fsGerenciamento.main.sistema_protocolo.Entity;
 
-import com._fsGerenciamento.main.sistema_protocolo.Entity.Funcionario;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,43 +9,55 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.fsGerenciamento.main.sistema_protocolo.Enums.Setor;
+
 @Entity
 @Table(name = "tb_documentos")
+@Getter @Setter
 public class Documento {
 
-    @Getter
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Getter
+
     @Column(length = 100, nullable = false, updatable = false)
     private String identificacao;
 
-    @Getter
+
     @Column(length = 100, nullable = false)
     private String nome;
 
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
-    @Setter @Getter
+
     @Column(name = "local_atual", nullable = false, length = 100)
     private String localAtual;
 
-    @Getter
+    @Column(name = "setor", nullable = false, length = 50)
+    @Enumerated(EnumType.STRING)
+    private Setor setor;
+
+
+
     @Column(name = "data_entrada", nullable = false, updatable = false)
     private LocalDate dataEntrada;
 
-    @Setter @Getter
+
     @Column(name = "data_saida")
     private LocalDate dataSaida;
 
-    @Getter
+
     @Column(name = "data_ultima_modificacao", nullable = false)
     private LocalDateTime dataUltimaModificacao; // Tipo corrigido
 
-    @Setter @Getter
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id", nullable = false, updatable = false)
+    private Funcionario autor;
+
     @ManyToOne
     @JoinColumn(name = "funcionario_id", nullable = false)
     private Funcionario responsavel;
